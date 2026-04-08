@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="people">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="person" type="personType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="person" type="personType"/>
+
+    <xs:element name="bookborrowed" type="bookBorrowedType"/>
+
+    <xs:element name="book" type="bookType"/>
+
+    <xs:complexType name="personType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="first_name" type="xs:string"/>
+            <xs:element name="last_name" type="xs:string"/>
+            <xs:element name="books_borrowed" type="bookBorrowedListType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="bookBorrowedListType">
+        <xs:sequence>
+            <xs:element name="book_borrowed" type="bookBorrowedType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="bookBorrowedType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="borrow_start_date" type="xs:string"/>
+            <xs:element name="borrow_expire_date" type="xs:string"/>
+            <xs:element name="book" type="bookType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="bookType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="book_name" type="xs:string"/>
+            <xs:element name="author" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
